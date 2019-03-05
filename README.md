@@ -6,9 +6,34 @@ A project is on user's rating of travelling. There are various 24 attractions in
 - Total categories: 24
 - Total Number of users: 5456
 - ID Column: Users ID
-- Null values column: 
-  - Category 12:    1
-  - Category 24:    1
+
+### Columns:
+
+Attribute 1 : Unique user id 
+Attribute 2 : churches 
+Attribute 3 : resorts 
+Attribute 4 : beaches 
+Attribute 5 : parks 
+Attribute 6 : theatres 
+Attribute 7 : museums 
+Attribute 8 : malls 
+Attribute 9 : zoo 
+Attribute 10 : restaurants 
+Attribute 11 : pubs/bars 
+Attribute 12 : local services 
+Attribute 13 : burger/pizza shops 
+Attribute 14 : hotels/other lodgings 
+Attribute 15 : juice bars 
+Attribute 16 : art galleries 
+Attribute 17 : dance clubs 
+Attribute 18 : swimming pools 
+Attribute 19 : gyms 
+Attribute 20 : bakeries 
+Attribute 21 : beauty & spas 
+Attribute 22 : cafes 
+Attribute 23 : view points 
+Attribute 24 : monuments 
+Attribute 25 : gardens
 
 # Install dependencies
 Run a command `pip install -r requirement.txt`
