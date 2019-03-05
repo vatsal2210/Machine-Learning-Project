@@ -18,22 +18,22 @@ print("libraries imported")
 print("\n")
 
 
-train_url = "D:/College/Graduate/Term/Winter 2019/ML/Project/code/train.csv"
+train_url = "D:/College/Graduate/Term/Winter 2019/ML/github/Machine-Learning-Project-Western/train.csv"
 train = pd.read_csv(train_url)
 
 # Drop last column from dataset
 train = train.iloc[:, :-1]
 
-print("***** Train_Set *****")
-print(train.head())
-print("\n")
+# print("***** Train_Set *****")
+# print(train.head())
+# print("\n")
 
-print("***** Train_Set Describe *****")
-print(train.describe())
-print("\n")
+# print("***** Train_Set Describe *****")
+# print(train.describe())
+# print("\n")
 
-print(train.columns.values)
-print("\n")
+# print(train.columns.values)
+# print("\n")
 
 # Check Null values
 train.isna().head()
