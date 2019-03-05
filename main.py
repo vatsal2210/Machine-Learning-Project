@@ -62,14 +62,6 @@ print("\n")
     # plt.title("All category frequency with rating - box")
     # plt.show()
 
-# fig, ax = plt.subplots(figsize=(30,10))
-# plt.xticks(fontsize=20) # X Ticks
-# plt.yticks(fontsize=20) # Y Ticks
-# ax.set_title('Number of users per category', fontweight="bold", size=25) # Title
-# ax.set_ylabel('Number of users', fontsize = 25) # Y label
-# ax.set_xlabel('Category', fontsize = 25) # X label
-# dp.groupby(['category']).count()['users'].plot(ax=ax, kind='bar')
-
 array = train.values
 X = array[:, 1:24]
 
