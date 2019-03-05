@@ -20,20 +20,21 @@ print("\n")
 
 train_url = "C:/train.csv"
 train = pd.read_csv(train_url)
+train_df = pd.DataFrame(train)
 
 # Drop last column from dataset
 train = train.iloc[:, :-1]
 
-# print("***** Train_Set *****")
-# print(train.head())
-# print("\n")
+print("***** Train_Set *****")
+print(train.head())
+print("\n")
 
-# print("***** Train_Set Describe *****")
-# print(train.describe())
-# print("\n")
+print("***** Train_Set Describe *****")
+print(train.describe())
+print("\n")
 
-# print(train.columns.values)
-# print("\n")
+print(train.columns.values)
+print("\n")
 
 # Check Null values
 train.isna().head()
@@ -65,19 +66,19 @@ print("\n")
 array = train.values
 X = array[:, 1:24]
 
-X_train, X_test = model_selection.train_test_split(X, test_size=0.2, random_state=5)
+# X_train, X_test = model_selection.train_test_split(X, test_size=0.2, random_state=5)
 
-print("*****Size train set*****")
-print(X_train.shape)
-print(X_train)
-print("\n")
+# print("*****Size train set*****")
+# print(X_train.shape)
+# print(X_train)
+# print("\n")
 
-print("*****Size test set*****")
-print(X_test.shape)
-print("\n")
+# print("*****Size test set*****")
+# print(X_test.shape)
+# print("\n")
 
 #KMeans
-km = KMeans(n_clusters=5)
+km = KMeans(n_clusters=3)
 predictions  = km.fit(X)
 y_KMeans = km.predict(X)
 labels = km.labels_
@@ -85,11 +86,11 @@ labels = km.labels_
 print(predictions)
 print(labels)
 
-plt.scatter(X[:, 0], X[:, 1], c=y_KMeans, s=50, cmap='rainbow')
+plt.scatter(X[:, 3], X[:, 0], c=y_KMeans, s=50, cmap='rainbow')
 
 centroid = km.cluster_centers_
-plt.scatter(centroid[:, 0], centroid[:, 1], c='black', s=200, alpha=0.5)
+plt.scatter(centroid[:, 3], centroid[:, 0], c='black', s=200, alpha=0.5)
 plt.show()
 
-plt.scatter(X[:,0],X[:,1], c=labels, cmap='rainbow')  
+plt.scatter(X[:,3],X[:,0], c=labels, cmap='rainbow')  
 plt.show()

@@ -18,4 +18,8 @@ Run a command `pip install -r requirement.txt`
 
 # Applied Unsupervised Machine learning algorithms
 1. K-Means
-   - 
+
+
+
+User 1348
+User 2713
