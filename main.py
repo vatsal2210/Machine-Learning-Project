@@ -62,6 +62,14 @@ print("\n")
     # plt.title("All category frequency with rating - box")
     # plt.show()
 
+# fig, ax = plt.subplots(figsize=(30,10))
+# plt.xticks(fontsize=20) # X Ticks
+# plt.yticks(fontsize=20) # Y Ticks
+# ax.set_title('Number of users per category', fontweight="bold", size=25) # Title
+# ax.set_ylabel('Number of users', fontsize = 25) # Y label
+# ax.set_xlabel('Category', fontsize = 25) # X label
+# dp.groupby(['category']).count()['users'].plot(ax=ax, kind='bar')
+
 array = train.values
 X = array[:, 1:24]
 
@@ -77,9 +85,19 @@ print(X_test.shape)
 print("\n")
 
 #KMeans
-km = KMeans(n_clusters=3)
-predictions  = km.fit(X_train)
-# km.predict(X_test)
-print(predictions)
+km = KMeans(n_clusters=5)
+predictions  = km.fit(X)
+y_KMeans = km.predict(X)
 labels = km.labels_
+
+print(predictions)
+print(labels)
+
+plt.scatter(X[:, 0], X[:, 1], c=y_KMeans, s=50, cmap='rainbow')
+
 centroid = km.cluster_centers_
+plt.scatter(centroid[:, 0], centroid[:, 1], c='black', s=200, alpha=0.5)
+plt.show()
+
+plt.scatter(X[:,0],X[:,1], c=labels, cmap='rainbow')  
+plt.show()
