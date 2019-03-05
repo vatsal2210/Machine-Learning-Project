@@ -18,7 +18,7 @@ print("libraries imported")
 print("\n")
 
 
-train_url = "D:/College/Graduate/Term/Winter 2019/ML/github/Machine-Learning-Project-Western/train.csv"
+train_url = "C:/train.csv"
 train = pd.read_csv(train_url)
 
 # Drop last column from dataset
