@@ -63,8 +63,16 @@ print("\n")
     # plt.title("All category frequency with rating - box")
     # plt.show()
 
+train['User'] = train['User'].replace('User ', '')
+
+print(train['User'])
+
 array = train.values
-X = array[:, 1:24]
+X = array[:, 0]
+Y = array[:, 1:24]
+
+print(X)
+print(Y)
 
 # X_train, X_test = model_selection.train_test_split(X, test_size=0.2, random_state=5)
 
@@ -79,18 +87,18 @@ X = array[:, 1:24]
 
 #KMeans
 km = KMeans(n_clusters=3)
-predictions  = km.fit(X)
-y_KMeans = km.predict(X)
+predictions  = km.fit(Y)
+y_KMeans = km.predict(Y)
 labels = km.labels_
 
 print(predictions)
 print(labels)
 
-plt.scatter(X[:, 3], X[:, 0], c=y_KMeans, s=50, cmap='rainbow')
+plt.scatter(X[:, 0], Y[:, 0], c=y_KMeans, s=50, cmap='rainbow')
 
-centroid = km.cluster_centers_
-plt.scatter(centroid[:, 3], centroid[:, 0], c='black', s=200, alpha=0.5)
+# centroid = km.cluster_centers_
+# plt.scatter(centroid[:, 0], centroid[:, 0], c='black', s=200, alpha=0.5)
 plt.show()
 
-plt.scatter(X[:,3],X[:,0], c=labels, cmap='rainbow')  
+# plt.scatter(X[:,0],Y[:,0], c=labels, cmap='rainbow')  
 plt.show()
