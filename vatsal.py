@@ -49,7 +49,7 @@ for i in range(n_iter):
      #step 2.a
       EuclidianDistance=np.array([]).reshape(m,0)
       for k in range(K):
-          tempDist=np.sum((X-Centroids[:,k])**2,axis=1)
+          tempDist=np.sum((X - Centroids[:,k])**2,axis=1)
           EuclidianDistance=np.c_[EuclidianDistance,tempDist]
       C=np.argmin(EuclidianDistance,axis=1)+1
      

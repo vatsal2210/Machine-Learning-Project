@@ -45,6 +45,6 @@ Run a command `pip install -r requirement.txt`
 1. K-Means
 
 
+# Resources:
 
-User 1348
-User 2713
+1. https://mubaris.com/posts/kmeans-clustering/

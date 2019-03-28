@@ -1,6 +1,12 @@
 # Date: March 01, 2019
 # Google review rating with different attraction
 
+# Assign rows - Done
+# Assign random centroid - Done
+# Predict it
+# Plot it
+
+
 # Dependencies
 import pandas as pd 
 import numpy as np 
@@ -20,10 +26,11 @@ print("\n")
 
 train_url = "C:/train.csv"
 train = pd.read_csv(train_url)
-train_df = pd.DataFrame(train)
+train_df = pd.DataFrame(train, index=['User', 'Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7' ,'Category 8', 'Category 9', 'Category 10', 'Category 11', 'Category 12', 'Category 13', 'Category 14', 'Category 15', 'Category 16', 'Category 17' ,'Category 18' ,'Category 19', 'Category 20', 'Category 21' ,'Category 22', 'Category 23' , F'Category 24'])
 
 # Drop last column from dataset
 train = train.iloc[:, :-1]
+train.drop(['User'], axis = 1, inplace = True)
 
 print("***** Train_Set *****")
 print(train.head())
@@ -63,42 +70,34 @@ print("\n")
     # plt.title("All category frequency with rating - box")
     # plt.show()
 
-train['User'] = train['User'].replace('User ', '')
+# array = train.values
+# X = array[1:500]
+# Y = array[501:1000]
 
-print(train['User'])
+# # Assign random centroid
 
-array = train.values
-X = array[:, 0]
-Y = array[:, 1:24]
+# #KMeans
+# km = KMeans(n_clusters=3)
+# predictions  = km.fit(X)
+# y_KMeans = km.predict(Y)
+# labels = km.labels_
 
-print(X)
-print(Y)
+# print(predictions)
+# print(labels)
 
-# X_train, X_test = model_selection.train_test_split(X, test_size=0.2, random_state=5)
+# plt.scatter(X, Y, c=y_KMeans, s=1000, cmap='rainbow')
 
-# print("*****Size train set*****")
-# print(X_train.shape)
-# print(X_train)
-# print("\n")
+# # centroid = km.cluster_centers_
+# # plt.scatter(centroid[:, 0], centroid[:, 0], c='black', s=200, alpha=0.5)
+# plt.show()
 
-# print("*****Size test set*****")
-# print(X_test.shape)
-# print("\n")
+# # plt.scatter(X[:,0],Y[:,0], c=labels, cmap='rainbow')  
+# # END
 
-#KMeans
-km = KMeans(n_clusters=3)
-predictions  = km.fit(Y)
-y_KMeans = km.predict(Y)
-labels = km.labels_
+# ---------------------------------------------
 
-print(predictions)
-print(labels)
-
-plt.scatter(X[:, 0], Y[:, 0], c=y_KMeans, s=50, cmap='rainbow')
-
-# centroid = km.cluster_centers_
-# plt.scatter(centroid[:, 0], centroid[:, 0], c='black', s=200, alpha=0.5)
-plt.show()
-
-# plt.scatter(X[:,0],Y[:,0], c=labels, cmap='rainbow')  
-plt.show()
+# Getting the values and plotting it
+f1 = data['V1'].values
+f2 = data['V2'].values
+X = np.array(list(zip(f1, f2)))
+plt.scatter(f1, f2, c='black', s=7)
