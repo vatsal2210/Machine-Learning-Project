@@ -48,3 +48,7 @@ Run a command `pip install -r requirement.txt`
 # Resources:
 
 1. https://mubaris.com/posts/kmeans-clustering/
+2. https://www.datacamp.com/community/tutorials/k-means-clustering-r
+3. https://www.geeksforgeeks.org/multidimensional-data-analysis-in-python/
+4. https://stepupanalytics.com/k-means-clustering-algorithm/
+5. https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57
