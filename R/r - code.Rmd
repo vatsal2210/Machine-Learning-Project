@@ -1,0 +1,83 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+# Import libraries
+library(cluster)
+library(ggplot2)
+library(factoextra)
+
+# Read data from csv
+data <- read.csv("C:/train.csv")
+head(data)
+
+# Remove first column of users
+data <- data[, -1]
+head(data)
+
+# Rename column values
+colnames(data)[1] <- "Churches"
+colnames(data)[2] <- "Resorts"
+colnames(data)[3] <- "Beaches"
+colnames(data)[4] <- "Parks"
+colnames(data)[5] <- "Theatres"
+colnames(data)[6] <- "Museums"
+colnames(data)[7] <- "Malls"
+colnames(data)[8] <- "Zoo"
+colnames(data)[9] <- "Restaurants"
+colnames(data)[10] <- "Pubs/Bars"
+colnames(data)[11] <- "Local Services"
+colnames(data)[12] <- "Burger/Pizza Shops"
+colnames(data)[13] <- "Hotels/Other Lodgings"
+colnames(data)[14] <- "Juice Bars"
+colnames(data)[15] <- "Art Galeries"
+colnames(data)[16] <- "Dance Clubs"
+colnames(data)[17] <- "Swimming Pools"
+colnames(data)[18] <- "Gyms"
+colnames(data)[19] <- "Bakeries"
+colnames(data)[20] <- "Beauty & Spas"
+colnames(data)[21] <- "Cafes"
+colnames(data)[22] <- "View Points"
+colnames(data)[23] <- "Monuments"
+colnames(data)[24] <- "Gardens"
+head(data)
+
+summary(data)
+
+# Compute k-means
+set.seed(123)
+km.res <- kmeans(data, 3, nstart = 25)
+
+km.res
+
+# Cluster number for each of the observations
+km.res$cluster
+
+# Cluster size
+km.res$size
+
+# Cluster means
+km.res$centers
+
+# PAM
+pam.res <- pam(scale(data), 3)
+pam.res$medoids
+head(pam.res$cluster)
+
+clusplot(pam.res, main = "Cluster plot, k = 3", 
+         color = TRUE)
+
+# Plot clusters
+fviz_cluster(pam.res)
+fviz_cluster(km.res, data = data)
+fviz_silhouette(silhouette(pam.res)) 
+
+# Point graph
+fviz_cluster(pam.res, geom = "point")
+fviz_cluster(pam.res, frame.type = "euclid")
+
+fviz_cluster(pam.res) + 
+  scale_color_brewer(palette = "Set2")+
+  scale_fill_brewer(palette = "Set2") +
+  theme_minimal()
+
