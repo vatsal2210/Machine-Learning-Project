@@ -103,17 +103,15 @@ Run a command `pip install -r requirement.txt`
 5. David J. Ketchen, Jr; Christopher L. Shook (1996). "The application of cluster analysis in Strategic Management Research: An analysis and critique". Strategic Management Journal. [Link] (https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0266%28199606%2917:6%3C441::AID-SMJ819%3E3.0.CO;2-G)
 6. Trupti M. Kodinariya, Dr. Prashant R. Makwana. “Review on determining number of Cluster in K-Means Clustering”. In International Journal of Advance Research in Computer Science and Management Studies. Volume 1, Issue 6, November 2013 [Link] (http://docplayer.net/22058503-Review-on-determining-number-of-cluster-in-k-means-clustering.html)
 
-7. ‘Evaluation of Partitioning Clustering Algorithms for Processing Social Media Data in Tourism domain’, Shini Renjith, A. Sreekumar, M. Jathavedan, 2018 IEEE Recent Advances in Intelligent Computational Systems (RAICS) | December 06 - 08, 2018 , Trivandrum [Link]()
-8. ‘Use and Impact of Online Travel Reviews’, Markus Schuckert , Liu XianweiRob Law [Link](https://ieeexplore.ieee.org/document/8635080)
-9. ‘Hospitality and Tourism Online Reviews: Recent Trends and Future Directions’, Ulrike Gretzel , Kyung-Hyan Yoo [Link](https://www.researchgate.net/publication/221357282_Use_and_Impact_of_Online_Travel_Reviews)
-
-10. Getting started with Amazon SageMaker: [Link](https://aws.amazon.com/sagemaker/)
-11. Use the Amazon SageMaker SDK: Python: [Link](https://github.com/aws/sagemaker-python-sdk)
-12. SageMaker Examples: [Link](https://github.com/awslabs/amazon-sagemakerexamples)
-13. Python vs R Comparison: [Link](https://www.dataquest.io/blog/python-vs-r/)
-14. Python Libraries: [Link](https://docs.python.org/3/library/)
-15. R Libraries : [Link](https://www.datacamp.com/community/tutorials/r-packages-guide)
-16. K-means Algorithm: [Link](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
+7. ‘Use and Impact of Online Travel Reviews’, Markus Schuckert , Liu XianweiRob Law [Link](https://ieeexplore.ieee.org/document/8635080)
+8. ‘Hospitality and Tourism Online Reviews: Recent Trends and Future Directions’, Ulrike Gretzel , Kyung-Hyan Yoo [Link](https://www.researchgate.net/publication/221357282_Use_and_Impact_of_Online_Travel_Reviews)
+9. Getting started with Amazon SageMaker: [Link](https://aws.amazon.com/sagemaker/)
+10. Use the Amazon SageMaker SDK: Python: [Link](https://github.com/aws/sagemaker-python-sdk)
+11. SageMaker Examples: [Link](https://github.com/awslabs/amazon-sagemakerexamples)
+12. Python vs R Comparison: [Link](https://www.dataquest.io/blog/python-vs-r/)
+13. Python Libraries: [Link](https://docs.python.org/3/library/)
+14. R Libraries : [Link](https://www.datacamp.com/community/tutorials/r-packages-guide)
+15. K-means Algorithm: [Link](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
 
 ## Code-implementation
 1. [K-means clustering] https://mubaris.com/posts/kmeans-clustering/
