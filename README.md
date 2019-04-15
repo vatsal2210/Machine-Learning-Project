@@ -4,42 +4,42 @@ A project is on user's rating of travelling. There are various 24 attractions in
 
 ## Folder distribution & explnation
 **1. Amazon SageMaker:**
-	- Steps to start Amazon SageMaker for Machine Learning algorithm
+- Steps to start Amazon SageMaker for Machine Learning algorithm
 
 **2. Presentation**
-	- Presentation for the project
-	- Including details of aim, objective, algorithm explnation, result, amazon sagemaker and future work
+- Presentation for the project
+- Including details of aim, objective, algorithm explnation, result, amazon sagemaker and future work
 
 **3. Python**
-	- main.py
-		- python file to run a code
-	- requirement.txt 
-		- install requirement.txt to run python code
-	- result.txt
-		- result printed from python code
-	- Graph
-		- Includes all graph generated while running python code
-	- jupyter
-		- includes 3 versions of code imporvements and later on combined into main.py file
-	- Version
-		- python: 3.7.1
-		- pip: 19.0.3
+- main.py
+	- python file to run a code
+- requirement.txt 
+	- install requirement.txt to run python code
+- result.txt
+	- result printed from python code
+- Graph
+	- Includes all graph generated while running python code
+- jupyter
+	- includes 3 versions of code imporvements and later on combined into main.py file
+- Version
+	- python: 3.7.1
+	- pip: 19.0.3
 
 **4. R**
-	- r-code.R
-		- includes implementation in R (open a file with R studio - version: 1.1.4)
-	- output.txt
-	- graph
-		- Includes all graph generated from R code includes RPlot with k-means, k-medoids, clara
-		- Evaluation graph - elbow curve
-	- Version
-		- r studio: 1.1.4
+- r-code.R
+	- includes implementation in R (open a file with R studio - version: 1.1.4)
+- output.txt
+- graph
+	- Includes all graph generated from R code includes RPlot with k-means, k-medoids, clara
+	- Evaluation graph - elbow curve
+- Version
+	- r studio: 1.1.4
 
 **5. Final report.pdf**
-	- Final report of a project
+- Final report of a project
 
 **6. train.csv**
-	- Dataset of a project 
+- Dataset of a project 
 
 
 ## Dataset description
