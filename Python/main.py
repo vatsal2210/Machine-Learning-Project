@@ -13,7 +13,7 @@ import seaborn as sns
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import pyplot as plt
 
-sys.stdout = open("result.txt", "w")
+# sys.stdout = open("result.txt", "w")
 print("Group 16 - Machine Learning")
 print("Result - Python \n")
 start_time_script = time.time()
