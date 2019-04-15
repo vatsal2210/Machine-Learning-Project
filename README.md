@@ -3,14 +3,14 @@
 A project is on user's rating of travelling. There are various 24 attractions included in this database.
 
 ## Folder distribution & explnation
-** 1. Amazon SageMaker: **
+**1. Amazon SageMaker:**
 	- Steps to start Amazon SageMaker for Machine Learning algorithm
 
-** 2. Presentation **
+**2. Presentation**
 	- Presentation for the project
 	- Including details of aim, objective, algorithm explnation, result, amazon sagemaker and future work
 
-** 3. Python **
+**3. Python**
 	- main.py
 		- python file to run a code
 	- requirement.txt 
@@ -25,7 +25,7 @@ A project is on user's rating of travelling. There are various 24 attractions in
 		- python: 3.7.1
 		- pip: 19.0.3
 
-** 4. R **
+**4. R**
 	- r-code.R
 		- includes implementation in R (open a file with R studio - version: 1.1.4)
 	- output.txt
@@ -35,10 +35,10 @@ A project is on user's rating of travelling. There are various 24 attractions in
 	- Version
 		- r studio: 1.1.4
 
-** 5. Final report.pdf **
+**5. Final report.pdf**
 	- Final report of a project
 
-** 6. train.csv **
+**6. train.csv**
 	- Dataset of a project 
 
 
