@@ -2,7 +2,7 @@
 
 A project is on user's rating of travelling. There are various 24 attractions included in this database.
 
-## Folder distribution & explnation
+## Folder distribution & explanation
 **1. Amazon SageMaker:**
 - Steps to start Amazon SageMaker for Machine Learning algorithm
 
