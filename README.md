@@ -30,9 +30,9 @@ A project is on user's rating of travelling. There are various 24 attractions in
 - graph - Includes all graph generated from R code includes RPlot with k-means, k-medoids, clara - Evaluation graph - elbow curve
 - Version - r studio: 1.1.4
 
-**5. Final report.pdf**
+**5. Group-16 - Project report**
 
-- Final report of a project
+- Final report of a project in word and pdf
 
 **6. train.csv**
 
