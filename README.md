@@ -109,7 +109,7 @@ Run a command `pip install -r requirement.txt`
 10. K-means Algorithm: [Link](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
 
 ## Code-implementation
-1. [K-means clustering](https://mubaris.com/posts/kmeans-clustering/)
+1. [K-means clustering] https://mubaris.com/posts/kmeans-clustering/
 2. [K-means in R language] https://www.datacamp.com/community/tutorials/k-means-clustering-r
 3. [Multidimension analysis in python] https://www.geeksforgeeks.org/multidimensional-data-analysis-in-python/
 4. [K-means clustering in python] https://stepupanalytics.com/k-means-clustering-algorithm/
