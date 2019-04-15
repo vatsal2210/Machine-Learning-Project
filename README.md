@@ -2,6 +2,47 @@
 
 A project is on user's rating of travelling. There are various 24 attractions included in this database.
 
+## Folder distribution & explnation
+1. Amazon SageMaker:
+- Steps to start Amazon SageMaker for Machine Learning algorithm
+
+2. Presentation
+- Presentation for the project
+- Including details of aim, objective, algorithm explnation, result, amazon sagemaker and future work
+
+3. Python
+- main.py
+    - python file to run a code
+- requirement.txt 
+    - install requirement.txt to run python code
+- result.txt
+    - result printed from python code
+- Graph
+    - Includes all graph generated while running python code
+- jupyter
+    - includes 3 versions of code imporvements and later on combined into main.py file
+- Version
+    - python: 3.7.1
+    - pip: 19.0.3
+
+4. R
+- r-code.R
+    - includes implementation in R (open a file with R studio - version: 1.1.4)
+- output.txt
+- graph
+    - Includes all graph generated from R code includes RPlot with k-means, k-medoids, clara
+    - Evaluation graph - elbow curve
+- Version
+     - r studio: 1.1.4
+
+5. Final report.pdf
+- Final report of a project
+
+6. train.csv
+- Dataset of a project 
+
+# -----------------------------------------------------------------
+
 ## Dataset description
 - Total categories: 24
 - Total Number of users: 5456
@@ -35,19 +76,42 @@ Attribute 23 : view points
 Attribute 24 : monuments 
 Attribute 25 : gardens
 
-# Install dependencies
-Run a command `pip install -r requirement.txt`
-
-# Plot DataFrame
-[URL](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html)
+# -----------------------------------------------------------------
 
 # Applied Unsupervised Machine learning algorithms
-1. K-Means
 
+## Language
+1. Python
+2. R
+
+### Algorithms
+1. K-Means
+2. K-medoids
+3. Clara
+
+### Amazon SageMaker
+Amazon sagemaker content and presentation is included under Amazon SageMaker folder.
+
+# Install dependencies in python
+Run a command `pip install -r requirement.txt`
 
 # Resources:
 
-1. https://mubaris.com/posts/kmeans-clustering/
+## Research work & libraries
+3. ‘Evaluation of Partitioning Clustering Algorithms for Processing Social Media Data in Tourism domain’, Shini Renjith, A. Sreekumar, M. Jathavedan, 2018 IEEE Recent Advances in Intelligent Computational Systems (RAICS) | December 06 - 08, 2018 , Trivandrum [Link]()
+4. ‘Use and Impact of Online Travel Reviews’, Markus Schuckert , Liu XianweiRob Law [Link]()
+5. ‘Hospitality and Tourism Online Reviews: Recent Trends and Future Directions’, Ulrike Gretzel , Kyung-Hyan Yoo [Link]()
+
+1. Getting started with Amazon SageMaker: [Link]()
+2. Use the Amazon SageMaker SDK: Python: [Link]()
+6. SageMaker Examples: [Link]()
+7. Python vs R Comparison: [Link]()
+8. Python Libraries: [Link]()
+9. R Libraries : [Link]()
+10. K-means Algorithm: [Link]()
+
+## Code-implementation
+1. [K-means c](https://mubaris.com/posts/kmeans-clustering/)
 2. https://www.datacamp.com/community/tutorials/k-means-clustering-r
 3. https://www.geeksforgeeks.org/multidimensional-data-analysis-in-python/
 4. https://stepupanalytics.com/k-means-clustering-algorithm/
