@@ -1,0 +1,118 @@
+Group 16 - Machine Learning
+Result - Python 
+
+Libraries imported
+
+Importing the dataset
+- Rename category names
+
+Dataset (5456, 23) 
+
+Top 5 Records
+        Churches  Resorts  Beaches  Parks  Theatres  Museums  Malls    ...      Swimming Pools  Gyms  Bakeries  Beauty & Spas  Cafes  View Points  Monuments
+User                                                                   ...                                                                                  
+User 1       0.0      0.0     3.63   3.65       5.0     2.92    5.0    ...                 0.5   0.0       0.5            0.0    0.0          0.0        0.0
+User 2       0.0      0.0     3.63   3.65       5.0     2.92    5.0    ...                 0.5   0.0       0.5            0.0    0.0          0.0        0.0
+User 3       0.0      0.0     3.63   3.63       5.0     2.92    5.0    ...                 0.5   0.0       0.5            0.0    0.0          0.0        0.0
+User 4       0.0      0.5     3.63   3.63       5.0     2.92    5.0    ...                 0.5   0.0       0.5            0.0    0.0          0.0        0.0
+User 5       0.0      0.0     3.63   3.63       5.0     2.92    5.0    ...                 0.5   0.0       0.5            0.0    0.0          0.0        0.0
+
+[5 rows x 23 columns]
+
+
+Check Null values
+Churches                 0
+Resorts                  0
+Beaches                  0
+Parks                    0
+Theatres                 0
+Museums                  0
+Malls                    0
+Zoo                      0
+Restaurants              0
+Pubs/Bars                0
+Local Services           0
+Burger/Pizza Shops       0
+Hotels/Other Lodgings    0
+Juice Bars               0
+Art Galeries             0
+Dance Clubs              0
+Swimming Pools           0
+Gyms                     0
+Bakeries                 0
+Beauty & Spas            0
+Cafes                    0
+View Points              0
+Monuments                0
+dtype: int64
+
+
+Replaced with mean value
+Churches                 0
+Resorts                  0
+Beaches                  0
+Parks                    0
+Theatres                 0
+Museums                  0
+Malls                    0
+Zoo                      0
+Restaurants              0
+Pubs/Bars                0
+Local Services           0
+Burger/Pizza Shops       0
+Hotels/Other Lodgings    0
+Juice Bars               0
+Art Galeries             0
+Dance Clubs              0
+Swimming Pools           0
+Gyms                     0
+Bakeries                 0
+Beauty & Spas            0
+Cafes                    0
+View Points              0
+Monuments                0
+dtype: int64
+
+
+PCA Top records
+          0         1         2
+0 -0.575463 -2.467774 -2.095896
+1 -0.626477 -2.539747 -2.044275
+2 -0.628952 -2.532952 -2.043632
+3 -0.508027 -2.500205 -2.195698
+4 -0.628952 -2.532952 -2.043632
+
+
+--------------------------------
+Custom Model in Python 
+
+Centroid
+[[2. 1.]
+ [1. 2.]
+ [3. 4.]]
+
+
+Time for custom model - Assigning each value to its closest cluster: 1.346s
+
+
+--------------------------------
+KMeans prebuild library in Python 
+
+Time for fitting KMeans: 0.048s
+
+
+Time for prediction KMeans: 0.001s
+
+
+Comparing with scikit-learn centroids
+From Scratch
+[[2.2956953 2.4323018]
+ [1.0667175 1.3387975]
+ [1.3998593 4.884184 ]]
+From sci-kit learn
+[[1.24301758 4.87302734]
+ [1.08305774 1.36180118]
+ [2.43381503 2.54015173]]
+
+------------------------
+Code run in 16.59s
