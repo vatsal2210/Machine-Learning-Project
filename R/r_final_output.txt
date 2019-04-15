@@ -1,0 +1,389 @@
+> #import libraries
+> library(cluster)
+> library(ggplot2)
+> library(factoextra)
+> #start execution time for whole code
+> start.time <- Sys.time()
+> #import dataset
+> data <- read.csv("C:/train.csv")
+> head(data)
+    User Category.1 Category.2 Category.3 Category.4 Category.5 Category.6 Category.7 Category.8
+1 User 1          0        0.0       3.63       3.65          5       2.92          5       2.35
+2 User 2          0        0.0       3.63       3.65          5       2.92          5       2.64
+3 User 3          0        0.0       3.63       3.63          5       2.92          5       2.64
+4 User 4          0        0.5       3.63       3.63          5       2.92          5       2.35
+5 User 5          0        0.0       3.63       3.63          5       2.92          5       2.64
+6 User 6          0        0.0       3.63       3.63          5       2.92          5       2.63
+  Category.9 Category.10 Category.11 Category.12 Category.13 Category.14 Category.15 Category.16
+1       2.33        2.64        1.70        1.69        1.70        1.72        1.74        0.59
+2       2.33        2.65        1.70        1.69        1.70        1.72        1.74        0.59
+3       2.33        2.64        1.70        1.69        1.70        1.72        1.74        0.59
+4       2.33        2.64        1.73        1.69        1.70        1.72        1.74        0.59
+5       2.33        2.64        1.70        1.69        1.70        1.72        1.74        0.59
+6       2.33        2.65        1.71        1.69        1.69        1.72        1.74        0.59
+  Category.17 Category.18 Category.19 Category.20 Category.21 Category.22 Category.23
+1         0.5           0         0.5           0           0           0           0
+2         0.5           0         0.5           0           0           0           0
+3         0.5           0         0.5           0           0           0           0
+4         0.5           0         0.5           0           0           0           0
+5         0.5           0         0.5           0           0           0           0
+6         0.5           0         0.5           0           0           0           0
+  Category.24
+1           0
+2           0
+3           0
+4           0
+5           0
+6           0
+> data <- data[, -1]
+> head(data)
+  Category.1 Category.2 Category.3 Category.4 Category.5 Category.6 Category.7 Category.8
+1          0        0.0       3.63       3.65          5       2.92          5       2.35
+2          0        0.0       3.63       3.65          5       2.92          5       2.64
+3          0        0.0       3.63       3.63          5       2.92          5       2.64
+4          0        0.5       3.63       3.63          5       2.92          5       2.35
+5          0        0.0       3.63       3.63          5       2.92          5       2.64
+6          0        0.0       3.63       3.63          5       2.92          5       2.63
+  Category.9 Category.10 Category.11 Category.12 Category.13 Category.14 Category.15 Category.16
+1       2.33        2.64        1.70        1.69        1.70        1.72        1.74        0.59
+2       2.33        2.65        1.70        1.69        1.70        1.72        1.74        0.59
+3       2.33        2.64        1.70        1.69        1.70        1.72        1.74        0.59
+4       2.33        2.64        1.73        1.69        1.70        1.72        1.74        0.59
+5       2.33        2.64        1.70        1.69        1.70        1.72        1.74        0.59
+6       2.33        2.65        1.71        1.69        1.69        1.72        1.74        0.59
+  Category.17 Category.18 Category.19 Category.20 Category.21 Category.22 Category.23
+1         0.5           0         0.5           0           0           0           0
+2         0.5           0         0.5           0           0           0           0
+3         0.5           0         0.5           0           0           0           0
+4         0.5           0         0.5           0           0           0           0
+5         0.5           0         0.5           0           0           0           0
+6         0.5           0         0.5           0           0           0           0
+  Category.24
+1           0
+2           0
+3           0
+4           0
+5           0
+6           0
+> colnames(data)[1] <- "Churches"
+> colnames(data)[2] <- "Resorts"
+> colnames(data)[3] <- "Beaches"
+> colnames(data)[4] <- "Parks"
+> colnames(data)[5] <- "Theatres"
+> colnames(data)[6] <- "Museums"
+> colnames(data)[7] <- "Malls"
+> colnames(data)[8] <- "Zoo"
+> colnames(data)[9] <- "Restaurants"
+> colnames(data)[10] <- "Pubs/Bars"
+> colnames(data)[11] <- "Local Services"
+> colnames(data)[12] <- "Burger/Pizza Shops"
+> colnames(data)[13] <- "Hotels/Other Lodgings"
+> colnames(data)[14] <- "Juice Bars"
+> colnames(data)[15] <- "Art Galeries"
+> colnames(data)[16] <- "Dance Clubs"
+> colnames(data)[17] <- "Swimming Pools"
+> colnames(data)[18] <- "Gyms"
+> colnames(data)[19] <- "Bakeries"
+> colnames(data)[20] <- "Beauty & Spas"
+> colnames(data)[21] <- "Cafes"
+> colnames(data)[22] <- "View Points"
+> colnames(data)[23] <- "Monuments"
+> colnames(data)[24] <- "Gardens"
+> head(data)
+  Churches Resorts Beaches Parks Theatres Museums Malls  Zoo Restaurants Pubs/Bars
+1        0     0.0    3.63  3.65        5    2.92     5 2.35        2.33      2.64
+2        0     0.0    3.63  3.65        5    2.92     5 2.64        2.33      2.65
+3        0     0.0    3.63  3.63        5    2.92     5 2.64        2.33      2.64
+4        0     0.5    3.63  3.63        5    2.92     5 2.35        2.33      2.64
+5        0     0.0    3.63  3.63        5    2.92     5 2.64        2.33      2.64
+6        0     0.0    3.63  3.63        5    2.92     5 2.63        2.33      2.65
+  Local Services Burger/Pizza Shops Hotels/Other Lodgings Juice Bars Art Galeries Dance Clubs
+1           1.70               1.69                  1.70       1.72         1.74        0.59
+2           1.70               1.69                  1.70       1.72         1.74        0.59
+3           1.70               1.69                  1.70       1.72         1.74        0.59
+4           1.73               1.69                  1.70       1.72         1.74        0.59
+5           1.70               1.69                  1.70       1.72         1.74        0.59
+6           1.71               1.69                  1.69       1.72         1.74        0.59
+  Swimming Pools Gyms Bakeries Beauty & Spas Cafes View Points Monuments Gardens
+1            0.5    0      0.5             0     0           0         0       0
+2            0.5    0      0.5             0     0           0         0       0
+3            0.5    0      0.5             0     0           0         0       0
+4            0.5    0      0.5             0     0           0         0       0
+5            0.5    0      0.5             0     0           0         0       0
+6            0.5    0      0.5             0     0           0         0       0
+> summary(data)
+    Churches        Resorts         Beaches          Parks          Theatres        Museums     
+ Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :0.830   Min.   :1.120   Min.   :1.110  
+ 1st Qu.:0.920   1st Qu.:1.360   1st Qu.:1.540   1st Qu.:1.730   1st Qu.:1.770   1st Qu.:1.790  
+ Median :1.340   Median :1.905   Median :2.060   Median :2.460   Median :2.670   Median :2.680  
+ Mean   :1.456   Mean   :2.320   Mean   :2.489   Mean   :2.797   Mean   :2.959   Mean   :2.893  
+ 3rd Qu.:1.810   3rd Qu.:2.683   3rd Qu.:2.740   3rd Qu.:4.093   3rd Qu.:4.312   3rd Qu.:3.840  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+     Malls            Zoo         Restaurants      Pubs/Bars     Local Services
+ Min.   :1.120   Min.   :0.860   Min.   :0.840   Min.   :0.810   Min.   :0.78  
+ 1st Qu.:1.930   1st Qu.:1.620   1st Qu.:1.800   1st Qu.:1.640   1st Qu.:1.58  
+ Median :3.230   Median :2.170   Median :2.800   Median :2.680   Median :2.00  
+ Mean   :3.351   Mean   :2.541   Mean   :3.126   Mean   :2.833   Mean   :2.55  
+ 3rd Qu.:5.000   3rd Qu.:3.190   3rd Qu.:5.000   3rd Qu.:3.530   3rd Qu.:3.22  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.00  
+ Burger/Pizza Shops Hotels/Other Lodgings   Juice Bars     Art Galeries    Dance Clubs   
+ Min.   :0.780      Min.   :0.770         Min.   :0.760   Min.   :0.000   Min.   :0.000  
+ 1st Qu.:1.290      1st Qu.:1.190         1st Qu.:1.030   1st Qu.:0.860   1st Qu.:0.690  
+ Median :1.690      Median :1.610         Median :1.490   Median :1.330   Median :0.800  
+ Mean   :2.078      Mean   :2.126         Mean   :2.191   Mean   :2.207   Mean   :1.193  
+ 3rd Qu.:2.283      3rd Qu.:2.360         3rd Qu.:2.740   3rd Qu.:4.440   3rd Qu.:1.160  
+ Max.   :5.000      Max.   :5.000         Max.   :5.000   Max.   :5.000   Max.   :5.000  
+ Swimming Pools        Gyms           Bakeries      Beauty & Spas      Cafes       
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.00   Min.   :0.0000  
+ 1st Qu.:0.5800   1st Qu.:0.5300   1st Qu.:0.5200   1st Qu.:0.54   1st Qu.:0.5700  
+ Median :0.7400   Median :0.6900   Median :0.6900   Median :0.69   Median :0.7600  
+ Mean   :0.9492   Mean   :0.8224   Mean   :0.9698   Mean   :1.00   Mean   :0.9658  
+ 3rd Qu.:0.9100   3rd Qu.:0.8400   3rd Qu.:0.8600   3rd Qu.:0.86   3rd Qu.:1.0000  
+ Max.   :5.0000   Max.   :5.0000   Max.   :5.0000   Max.   :5.00   Max.   :5.0000  
+  View Points      Monuments        Gardens     
+ Min.   :0.000   Min.   :0.000   Min.   :0.000  
+ 1st Qu.:0.740   1st Qu.:0.790   1st Qu.:0.880  
+ Median :1.030   Median :1.070   Median :1.290  
+ Mean   :1.751   Mean   :1.531   Mean   :1.561  
+ 3rd Qu.:2.070   3rd Qu.:1.560   3rd Qu.:1.660  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000  
+> 
+> #compute k-means
+> #start time for k-means
+> start.time1 <- Sys.time()
+> set.seed(123)
+> km.res <- kmeans(data, 3, nstart = 25)
+> # Cluster number for each of the observations
+> km.res$cluster
+   [1] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3
+  [46] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 3 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+  [91] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2
+ [136] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3
+ [181] 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2
+ [226] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 2 3 2 3 3 3 2 2 2
+ [271] 2 2 2 2 2 2 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [316] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2 2 2 3 2 2 2 2 3 3 2 2 2 3 2 2 2 2 2 2 2 2
+ [361] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 2 2 2 2 2 2 2 3 3 3
+ [406] 2 2 2 2 2 3 2 2 2 2 2 3 3 2 2 2 3 2 3 2 3 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [451] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [496] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [541] 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [586] 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [631] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [676] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [721] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [766] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [811] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [856] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1
+ [901] 1 1 1 1 1 1 1 3 1 1 3 1 1 3 3 1 1 1 3 3 3 1 3 3 3 3 3 3 3 3 1 1 1 1 3 1 1 1 1 3 3 3 3 3 3
+ [946] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2 2 3 3 2 2 2 2 2 2 2 2 2 2 2 2 3
+ [991] 2 2 2 2 2 2 2 2 2 2
+ [ reached getOption("max.print") -- omitted 4456 entries ]
+> # Cluster size
+> km.res$size
+[1] 1093 2460 1903
+> # Cluster means
+> km.res$centers
+  Churches  Resorts  Beaches    Parks Theatres  Museums    Malls      Zoo Restaurants Pubs/Bars
+1 2.246844 2.729259 2.584986 2.379790 2.099021 1.917859 2.003001 1.580366    1.909735  1.615938
+2 1.092085 1.940724 1.916549 2.100972 2.257573 2.710484 3.919435 3.081898    4.019260  3.572687
+3 1.471403 2.574388 3.174824 3.936054 4.359496 3.690420 3.391550 2.392943    2.669911  2.575060
+  Local Services Burger/Pizza Shops Hotels/Other Lodgings Juice Bars Art Galeries Dance Clubs
+1       1.548609           1.414959              1.502031   1.831189     2.336203    1.671537
+2       3.180236           2.491467              2.579427   2.923260     2.868951    1.059378
+3       2.310368           1.925265              1.896837   1.450673     1.275864    1.090310
+  Swimming Pools      Gyms  Bakeries Beauty & Spas     Cafes View Points Monuments  Gardens
+1      1.7643367 1.7999451 2.2789113     2.1559469 1.8064867   2.7278957 2.3618207 2.451043
+2      0.7661585 0.6089959 0.7034512     0.7320488 0.6968130   0.9943862 0.9045122 1.059728
+3      0.7176458 0.5368471 0.5622438     0.6826590 0.8307725   2.1666579 1.8649711 1.696816
+> # print result
+> print(km.res)
+K-means clustering with 3 clusters of sizes 1093, 2460, 1903
+
+Cluster means:
+  Churches  Resorts  Beaches    Parks Theatres  Museums    Malls      Zoo Restaurants Pubs/Bars
+1 2.246844 2.729259 2.584986 2.379790 2.099021 1.917859 2.003001 1.580366    1.909735  1.615938
+2 1.092085 1.940724 1.916549 2.100972 2.257573 2.710484 3.919435 3.081898    4.019260  3.572687
+3 1.471403 2.574388 3.174824 3.936054 4.359496 3.690420 3.391550 2.392943    2.669911  2.575060
+  Local Services Burger/Pizza Shops Hotels/Other Lodgings Juice Bars Art Galeries Dance Clubs
+1       1.548609           1.414959              1.502031   1.831189     2.336203    1.671537
+2       3.180236           2.491467              2.579427   2.923260     2.868951    1.059378
+3       2.310368           1.925265              1.896837   1.450673     1.275864    1.090310
+  Swimming Pools      Gyms  Bakeries Beauty & Spas     Cafes View Points Monuments  Gardens
+1      1.7643367 1.7999451 2.2789113     2.1559469 1.8064867   2.7278957 2.3618207 2.451043
+2      0.7661585 0.6089959 0.7034512     0.7320488 0.6968130   0.9943862 0.9045122 1.059728
+3      0.7176458 0.5368471 0.5622438     0.6826590 0.8307725   2.1666579 1.8649711 1.696816
+
+Clustering vector:
+   [1] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3
+  [46] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 3 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+  [91] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2
+ [136] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3
+ [181] 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2
+ [226] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 2 3 2 3 3 3 2 2 2
+ [271] 2 2 2 2 2 2 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [316] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2 2 2 3 2 2 2 2 3 3 2 2 2 3 2 2 2 2 2 2 2 2
+ [361] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 2 2 2 2 2 2 2 3 3 3
+ [406] 2 2 2 2 2 3 2 2 2 2 2 3 3 2 2 2 3 2 3 2 3 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [451] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [496] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [541] 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [586] 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [631] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [676] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [721] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [766] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [811] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [856] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1
+ [901] 1 1 1 1 1 1 1 3 1 1 3 1 1 3 3 1 1 1 3 3 3 1 3 3 3 3 3 3 3 3 1 1 1 1 3 1 1 1 1 3 3 3 3 3 3
+ [946] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2 2 3 3 2 2 2 2 2 2 2 2 2 2 2 2 3
+ [991] 2 2 2 2 2 2 2 2 2 2
+ [ reached getOption("max.print") -- omitted 4456 entries ]
+
+Within cluster sum of squares by cluster:
+[1] 34299.27 74583.77 56573.43
+ (between_SS / total_SS =  23.3 %)
+
+Available components:
+
+[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss" "betweenss"   
+[7] "size"         "iter"         "ifault"      
+> #end the timer
+> end.time1 <- Sys.time()
+> time.taken1 <- end.time1 - start.time1
+> sprintf("The time taken for k-means %.4s sec", time.taken1)
+[1] "The time taken for k-means 0.84 sec"
+> 
+> 
+> # Compute k-medoids
+> # start timer
+> start.time2 <- Sys.time()
+> #Plot k-medoids
+> fviz_cluster(pam.res)
+> pam.res <- pam(scale(data), 3)
+> pam.res$medoids
+       Churches    Resorts    Beaches       Parks   Theatres     Museums      Malls         Zoo
+[1,] -0.2123240 -0.4430070 -0.9210745 -0.03581384 -0.1186960 -0.07290214  1.1663347 -0.05470214
+[2,] -0.1639918 -0.6822014  2.0120515  1.68284733  1.5242519  1.15916236 -1.0692628 -0.65755034
+[3,]  0.8993181 -0.0701450 -0.3841361 -0.61633939 -0.7235995 -0.68893440 -0.8428732 -0.85550050
+     Restaurants  Pubs/Bars Local Services Burger/Pizza Shops Hotels/Other Lodgings Juice Bars
+[1,] -0.08550921  0.1355630     -0.1013060          0.2575267             0.2093707 -0.1400795
+[2,] -0.96257159 -0.3309175     -0.4921394         -0.4629952            -0.4731543 -0.4698852
+[3,] -1.03627431 -0.9426952     -0.7237444         -0.4149604            -0.3807290 -0.3684065
+     Art Galeries Dance Clubs Swimming Pools       Gyms   Bakeries Beauty & Spas      Cafes
+[1,]    0.8003840  -0.4812994     -0.3278797 -0.2029872 -0.2739361    -0.3267228 -0.4364534
+[2,]   -0.4292479   0.2684717     -0.4305980 -0.2240863 -0.3736062    -0.8376572 -1.0386990
+[3,]   -0.3767992   0.2323382      0.4938670  0.6515232  0.4154490     1.0385608  0.3271079
+     View Points   Monuments    Gardens
+[1,]  -0.7446747 -0.32763087 -0.3248865
+[2,]   0.3687060  0.08242651 -0.2139338
+[3,]   0.2561170  0.46970293  0.5883398
+> head(pam.res$cluster)
+[1] 1 1 1 1 1 1
+> clusplot(pam.res, main = "Cluster plot, k = 3", 
++          color = TRUE)
+> #end the timer
+> end.time2 <- Sys.time()
+> time.taken2 <- end.time2 - start.time2
+> sprintf("The time taken for k-medoids %.4s sec", time.taken2)
+[1] "The time taken for k-medoids 8.50 sec"
+> 
+> 
+> #compute CLARA
+> #start timer
+> start.time3 <- Sys.time()
+> clara(data, 3, samples = 15)
+Call:	 clara(x = data, k = 3, samples = 15) 
+Medoids:
+     Churches Resorts Beaches Parks Theatres Museums Malls  Zoo Restaurants Pubs/Bars
+[1,]     1.25    1.66    1.32  2.73     2.79    2.79  5.00 2.06        3.03      3.03
+[2,]     2.08    2.12    2.26  2.03     2.03    2.04  1.91 2.00        1.81      1.70
+[3,]     1.19    1.22    1.75  1.79     1.71    3.14  5.00 3.92        5.00      5.00
+     Local Services Burger/Pizza Shops Hotels/Other Lodgings Juice Bars Art Galeries Dance Clubs
+[1,]           2.44               2.44                  2.45       1.98         3.61        0.66
+[2,]           1.64               1.65                  1.67       2.21         1.56        1.40
+[3,]           5.00               1.74                  1.66       1.35         1.03        0.57
+     Swimming Pools Gyms Bakeries Beauty & Spas Cafes View Points Monuments Gardens
+[1,]           0.64 0.63     0.65          0.68  0.54        0.58      1.07    1.24
+[2,]           1.37 1.39     1.41          1.44  0.90        2.06      2.05    2.06
+[3,]           0.55 0.54     0.55          0.58  0.91        1.28      1.19    1.18
+Objective function:	 5.895573
+Clustering vector: 	 int [1:5456] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ...
+Cluster sizes:	    	 2306 2134 1016 
+Best sample:
+ [1]  148  258  367  385  392  542  705  788  857  901  938 1079 1126 1174 1229 1234 1630 1738
+[19] 1976 2034 2169 2273 2342 2554 2762 2842 2855 3094 3144 3161 3218 3339 3362 3555 3814 4014
+[37] 4259 4562 4588 4784 4919 5177 5192 5322 5401 5441
+
+Available components:
+ [1] "sample"     "medoids"    "i.med"      "clustering" "objective"  "clusinfo"   "diss"      
+ [8] "call"       "silinfo"    "data"      
+> set.seed(1234)
+> #compute clara
+> clarax <- clara(data, 3, samples=50)
+> # Cluster plot
+> fviz_cluster(clarax, stand = FALSE, geom = "point",
++              pointsize = 1)
+> # Silhouette plot
+> plot(silhouette(clarax),  col = 1:24, main = "Silhouette plot")  
+> pam(data, 3)
+Medoids:
+       ID Churches Resorts Beaches Parks Theatres Museums Malls  Zoo Restaurants Pubs/Bars
+[1,] 4908     1.05    1.29    2.60  2.60     2.74    2.77  5.00 2.15        3.14      2.61
+[2,] 5301     1.95    2.85    2.84  1.96     1.94    1.93  1.95 2.27        2.12      2.01
+[3,] 2042     1.49    1.74    1.76  1.78     2.12    1.90  3.26 3.13        4.35      3.62
+     Local Services Burger/Pizza Shops Hotels/Other Lodgings Juice Bars Art Galeries Dance Clubs
+[1,]           2.59               2.60                  2.74       3.72         4.42        0.70
+[2,]           1.77               1.76                  1.77       1.80         1.82        1.66
+[3,]           5.00               1.88                  1.68       1.22         1.23        1.23
+     Swimming Pools Gyms Bakeries Beauty & Spas Cafes View Points Monuments Gardens
+[1,]           0.68 0.69     0.71          0.73  1.00        0.99      1.01    1.08
+[2,]           1.49 1.47     1.49          1.51  0.72        1.97      1.95    1.94
+[3,]           0.61 0.58     0.57          0.56  0.57        0.74      1.02    1.47
+Clustering vector:
+   [1] 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 3 3 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 3 3 3 3 3
+  [46] 1 2 3 1 1 1 1 1 1 1 1 3 1 3 3 1 3 1 1 3 1 3 3 3 3 3 3 2 1 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2
+  [91] 2 1 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 3 2 3 3 1 3 1 2 3 2 2 1 2 1 3 3 1 3 3 3 2 1 1 1 1
+ [136] 1 1 1 1 1 1 1 1 3 1 3 3 3 1 1 1 1 1 1 1 1 3 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 2
+ [181] 3 3 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ [226] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 1 1 3 1 1
+ [271] 2 1 1 1 1 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 3 2 2
+ [316] 2 3 3 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 3 3 2 1 1 1 2 3 3 3 1 1 1 2 1 1 1 2 2 2 1 1 1 1 1 1 1
+ [361] 1 1 1 1 3 1 3 1 3 3 3 3 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3
+ [406] 1 3 1 1 1 1 1 1 3 1 3 3 1 1 1 1 1 1 3 1 2 1 3 3 3 3 3 3 3 2 3 2 2 2 2 2 2 2 2 2 2 1 2 2 2
+ [451] 2 2 2 2 2 1 1 1 3 2 2 2 2 2 3 2 2 2 2 2 2 1 1 2 2 2 2 2 3 3 1 2 3 2 2 3 2 2 2 2 2 2 2 2 2
+ [496] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 3 3 3 2 1 1 3
+ [541] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [586] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 3 3
+ [631] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 3 3 3 3 1 1 3 3 1 1 1 1 1 1 1 1 1 1
+ [676] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [721] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [766] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [811] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [856] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [901] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [946] 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 3 3 3 2 2 2 1 1 2 2 1 2 1 1 3 3 1 2 1 1 1 3 1 3 3 3 3 1 3
+ [991] 3 3 1 3 1 1 1 1 1 1
+ [ reached getOption("max.print") -- omitted 4456 entries ]
+Objective function:
+   build     swap 
+5.842990 5.833298 
+
+Available components:
+ [1] "medoids"    "id.med"     "clustering" "objective"  "isolation"  "clusinfo"   "silinfo"   
+ [8] "diss"       "call"       "data"      
+> pam.res <- pam(scale(data), 3)
+> head(pam.res$cluster)
+[1] 1 1 1 1 1 1
+> clusplot(pam.res, main = "Cluster plot, k = 3", 
++          color = TRUE)
+> #end the timer
+> end.time3 <- Sys.time()
+> time.taken3 <- end.time3 - start.time3
+> sprintf("The time taken for CLARA %.4s sec", time.taken3)
+[1] "The time taken for CLARA 14.2 sec"
+> #end the timer
+> end.time <- Sys.time()
+> time.taken <- end.time - start.time
+> sprintf("Code execution time %.4s sec", time.taken)
+[1] "Code execution time 23.9 sec"
