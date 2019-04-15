@@ -96,17 +96,24 @@ Run a command `pip install -r requirement.txt`
 # Resources:
 
 ## Research work & libraries
-3. ‘Evaluation of Partitioning Clustering Algorithms for Processing Social Media Data in Tourism domain’, Shini Renjith, A. Sreekumar, M. Jathavedan, 2018 IEEE Recent Advances in Intelligent Computational Systems (RAICS) | December 06 - 08, 2018 , Trivandrum [Link]()
-4. ‘Use and Impact of Online Travel Reviews’, Markus Schuckert , Liu XianweiRob Law [Link](https://ieeexplore.ieee.org/document/8635080)
-5. ‘Hospitality and Tourism Online Reviews: Recent Trends and Future Directions’, Ulrike Gretzel , Kyung-Hyan Yoo [Link](https://www.researchgate.net/publication/221357282_Use_and_Impact_of_Online_Travel_Reviews)
+1. Celebi, M. E., Kingravi, H. A., and Vela, P. A. (2013). "A comparative study of efficient initialization methods for the k-means clustering algorithm". Expert Systems with Applications. [Link] (https://arxiv.org/abs/1209.1960)
+2. Tryon, Robert C. (1939). Cluster Analysis: Correlation Profile and Orthometric (factor) Analysis for the Isolation of Unities in Mind and Personality. Edwards Brothers. [Link] (https://www.scirp.org/(S(i43dyn45teexjx455qlt3d2q))/reference/ReferencesPapers.aspx?ReferenceID=1866589)
+3. Maulik, Ujjwal, and Sanghamitra Bandyopadhyay. "Performance evaluation of some clustering algorithms and validity indices." IEEE Transactions on Pattern Analysis and Machine Intelligence 24, no. 12 (2002): 1650-1654. [Link] (https://pdfs.semanticscholar.org/3f78/ef83659c501e84b9c9be88d0a85081c42de6.pdf)
+4. Kovács, Ferenc, Csaba Legány, and Attila Babos. "Cluster validity measurement techniques." In a 6th International symposium of hungarian researchers on computational intelligence. 2005. [Link] (https://imada.sdu.dk/Research/EDML/)
+5. David J. Ketchen, Jr; Christopher L. Shook (1996). "The application of cluster analysis in Strategic Management Research: An analysis and critique". Strategic Management Journal. [Link] (https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0266%28199606%2917:6%3C441::AID-SMJ819%3E3.0.CO;2-G)
+6. Trupti M. Kodinariya, Dr. Prashant R. Makwana. “Review on determining number of Cluster in K-Means Clustering”. In International Journal of Advance Research in Computer Science and Management Studies. Volume 1, Issue 6, November 2013 [Link] (http://docplayer.net/22058503-Review-on-determining-number-of-cluster-in-k-means-clustering.html)
 
-1. Getting started with Amazon SageMaker: [Link](https://aws.amazon.com/sagemaker/)
-2. Use the Amazon SageMaker SDK: Python: [Link](https://github.com/aws/sagemaker-python-sdk)
-6. SageMaker Examples: [Link](https://github.com/awslabs/amazon-sagemakerexamples)
-7. Python vs R Comparison: [Link](https://www.dataquest.io/blog/python-vs-r/)
-8. Python Libraries: [Link](https://docs.python.org/3/library/)
-9. R Libraries : [Link](https://www.datacamp.com/community/tutorials/r-packages-guide)
-10. K-means Algorithm: [Link](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
+7. ‘Evaluation of Partitioning Clustering Algorithms for Processing Social Media Data in Tourism domain’, Shini Renjith, A. Sreekumar, M. Jathavedan, 2018 IEEE Recent Advances in Intelligent Computational Systems (RAICS) | December 06 - 08, 2018 , Trivandrum [Link]()
+8. ‘Use and Impact of Online Travel Reviews’, Markus Schuckert , Liu XianweiRob Law [Link](https://ieeexplore.ieee.org/document/8635080)
+9. ‘Hospitality and Tourism Online Reviews: Recent Trends and Future Directions’, Ulrike Gretzel , Kyung-Hyan Yoo [Link](https://www.researchgate.net/publication/221357282_Use_and_Impact_of_Online_Travel_Reviews)
+
+10. Getting started with Amazon SageMaker: [Link](https://aws.amazon.com/sagemaker/)
+11. Use the Amazon SageMaker SDK: Python: [Link](https://github.com/aws/sagemaker-python-sdk)
+12. SageMaker Examples: [Link](https://github.com/awslabs/amazon-sagemakerexamples)
+13. Python vs R Comparison: [Link](https://www.dataquest.io/blog/python-vs-r/)
+14. Python Libraries: [Link](https://docs.python.org/3/library/)
+15. R Libraries : [Link](https://www.datacamp.com/community/tutorials/r-packages-guide)
+16. K-means Algorithm: [Link](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
 
 ## Code-implementation
 1. [K-means clustering] https://mubaris.com/posts/kmeans-clustering/
