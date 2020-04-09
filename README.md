@@ -118,3 +118,17 @@ Run a command `pip install -r requirement.txt`
 3. [Multidimension analysis in python](https://www.geeksforgeeks.org/multidimensional-data-analysis-in-python/)
 4. [K-means clustering in python](https://stepupanalytics.com/k-means-clustering-algorithm/)
 5. [Visualize multi dimensional data](https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57)
+
+## Author
+
+**Vatsal Shah**
+
+[**PORTFOLIO**](https://vatsalshah.in)
+
+[**GITHUB**](https://github.com/vatsal2210)
+
+[**BLOG**](https://medium.com/@vatsalshah2210)
+
+If you like my stuff and hate spam, I can send my upcoming articles to your inbox. One-click unsubscribe anytime — [**Click here to join my newsletter**](https://vatsalshah.substack.com/subscribe) 💌
+
+If you’re feeling generous today, you can [**buy me a coffee**](https://www.buymeacoffee.com/vatsalshah) ☕
